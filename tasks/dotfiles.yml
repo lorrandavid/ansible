@@ -1,0 +1,16 @@
+- name: Create backup to old Neovim config
+  shell: "mv {{ lookup('env', 'HOME') }}/.config/nvim {{ lookup('env', 'HOME') }}/.config/nvim.bak"
+  ignore_errors: yes
+  tags:
+    - install
+    - dotfiles
+
+- name: Create symlink to Neovim config
+  file:
+    src: "{{ lookup('env', 'PWD') }}/nvim"
+    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
+    state: link
+    force: yes
+  tags:
+    - install
+    - dotfiles

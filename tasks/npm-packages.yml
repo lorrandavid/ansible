@@ -1,0 +1,15 @@
+- name: Install Yarn
+  npm:
+    name: yarn
+    global: yes
+  tags:
+    - install
+    - node
+
+- name: Install Http-server
+  npm:
+    name: http-server
+    global: yes
+  tags:
+    - install
+    - node

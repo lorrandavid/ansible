@@ -1,5 +1,10 @@
+- name: Get current timestamp
+  command: date +"%Y%m%d%H%M%S"
+  register: timestamp_result
+  changed_when: false
+
 - name: Create backup to old Neovim config
-  shell: "mv {{ lookup('env', 'HOME') }}/.config/nvim {{ lookup('env', 'HOME') }}/.config/nvim.bak"
+  shell: "mv {{ lookup('env', 'HOME') }}/.config/nvim {{ lookup('env', 'HOME') }}/.config/nvim_{{ timestamp_result.stdout }}.bak"
   ignore_errors: yes
   tags:
     - install

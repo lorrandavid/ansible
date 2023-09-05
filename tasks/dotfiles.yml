@@ -2,6 +2,9 @@
   command: date +"%Y%m%d%H%M%S"
   register: timestamp_result
   changed_when: false
+  tags:
+    - install
+    - dotfiles
 
 - name: Create backup to old Neovim config
   shell: "mv {{ lookup('env', 'HOME') }}/.config/nvim {{ lookup('env', 'HOME') }}/.config/nvim_{{ timestamp_result.stdout }}.bak"

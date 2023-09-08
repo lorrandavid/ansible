@@ -16,8 +16,10 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
-map("n", "<C-p>", "<cmd>Telescope find_files<cr>")
+map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
+map("n", "<C-p>", "<cmd>Telescope git_files<cr>")
 map("n", "<leader>fw", "<cmd>Telescope live_grep<cr>")
+
 map("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<cr>")
 map("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<cr>")
 map("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<cr>")

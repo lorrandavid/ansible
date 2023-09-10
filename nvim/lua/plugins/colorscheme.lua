@@ -1,5 +1,5 @@
 return {
-  -- { "rose-pine/neovim", name = "rose-pine" },
+  { "rose-pine/neovim", name = "rose-pine" },
   {
     "catppuccin/nvim",
     as = "catppuccin",
@@ -42,6 +42,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
+      colorscheme = "rose-pine",
       -- colorscheme = "catppuccin",
       -- colorscheme = "gruvbox",
     },

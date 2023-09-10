@@ -30,6 +30,8 @@ return {
       extra_groups = {
         "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
         "NvimTreeNormal", -- NvimTree
+        "NeoTreeNormal",
+        "NeoTreeNormalNC",
         -- make floating windows transparent
         "LspFloatWinNormal",
         "Normal",

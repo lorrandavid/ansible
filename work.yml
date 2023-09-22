@@ -14,7 +14,7 @@
         - core
   tasks:
     - include: tasks/ssh.yml
-    # - include: tasks/git.yml
+    - include: tasks/git.yml
     # - include: tasks/core.yml
     # - include: tasks/node.yml
     # - include: tasks/npm-packages.yml

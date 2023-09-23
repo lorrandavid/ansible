@@ -38,12 +38,14 @@ return {
       })
     end,
   },
+  { "savq/melange-nvim", name = "melange" },
   -- { "morhetz/gruvbox" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine",
-      -- colorscheme = "catppuccin",
+      -- colorscheme = "melange",
+      -- colorscheme = "rose-pine",
+      colorscheme = "catppuccin",
       -- colorscheme = "gruvbox",
     },
   },

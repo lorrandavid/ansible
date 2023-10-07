@@ -39,14 +39,23 @@ return {
     end,
   },
   { "savq/melange-nvim", name = "melange" },
+  {
+    "AlexvZyl/nordic.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("nordic").load()
+    end,
+  },
   -- { "morhetz/gruvbox" },
   {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme = "melange",
       -- colorscheme = "rose-pine",
-      colorscheme = "catppuccin",
+      -- colorscheme = "catppuccin",
       -- colorscheme = "gruvbox",
+      colorscheme = "nordic",
     },
   },
 }

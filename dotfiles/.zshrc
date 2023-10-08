@@ -123,3 +123,9 @@ esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# go
+export PATH=$PATH:/usr/local/go/bin
+
+# change autosuggest colors
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'

@@ -15,14 +15,4 @@ return {
       { "<leader>fw", "<cmd>Telescope live_grep<cr>" },
     },
   },
-  -- {
-  --   "nvim-telescope/telescope.nvim",
-  --   opts = {
-  --     pickers = {
-  --       find_files = {
-  --
-  --       }
-  --     }
-  --   }
-  -- }
 }

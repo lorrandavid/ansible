@@ -128,4 +128,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 
 # change autosuggest colors
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'

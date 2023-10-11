@@ -53,7 +53,7 @@ return {
     opts = {
       -- colorscheme = "melange",
       -- colorscheme = "rose-pine",
-      colorscheme = "catppuccin",
+      colorscheme = "catppuccin-macchiato",
       -- colorscheme = "gruvbox",
       -- colorscheme = "nordic",
     },

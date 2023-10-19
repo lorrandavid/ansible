@@ -1,7 +1,7 @@
 return {
   {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
+    branch = 'v3.x',
     dependencies = {
       -- LSP Support
       'neovim/nvim-lspconfig',             -- Required
@@ -9,46 +9,49 @@ return {
       'williamboman/mason-lspconfig.nvim', -- Optional
 
       -- Autocompletion
-      'hrsh7th/nvim-cmp',         -- Required
-      'hrsh7th/cmp-nvim-lsp',     -- Required
-      'hrsh7th/cmp-buffer',       -- Optional
-      'hrsh7th/cmp-path',         -- Optional
-      'saadparwaiz1/cmp_luasnip', -- Optional
-      'hrsh7th/cmp-nvim-lua',     -- Optional
+      'hrsh7th/nvim-cmp',     -- Required
+      'hrsh7th/cmp-nvim-lsp', -- Required
+      -- 'hrsh7th/cmp-buffer',       -- Optional
+      -- 'hrsh7th/cmp-path',         -- Optional
+      -- 'saadparwaiz1/cmp_luasnip', -- Optional
+      -- 'hrsh7th/cmp-nvim-lua',     -- Optional
 
       -- Install none-ls for diagnostics, code actions, and formating
-      -- "jose-elias-alvarez/null-ls.nvim",
+      -- 'nvimtools/none-ls.nvim',
 
       -- Snippets
-      'L3MON4D3/LuaSnip',             -- Required
-      'rafamadriz/friendly-snippets', -- Optional
+      'L3MON4D3/LuaSnip', -- Required
+      -- 'rafamadriz/friendly-snippets', -- Optional
     },
     config = function()
-      local lsp = require("lsp-zero")
+      local lsp_zero = require('lsp-zero')
+      local map_lsp_keybinds = require("user.keymaps_lsp").map_lsp_keybinds -- Has to load keymaps before plugins
 
-      -- Setup lsp-zero with recommended settings
-      lsp.preset("recommended")
-      lsp.on_attach(function(client, bufnr)
-        require("lsp-format").on_attach(client, bufnr)
+      lsp_zero.on_attach(function(_, bufnr)
+        -- see :help lsp-zero-keybindings
+        -- to learn the available actions
+        lsp_zero.default_keymaps({ buffer = bufnr })
+
+        -- Pass the current buffer to map lsp keybinds
+        map_lsp_keybinds(bufnr)
       end)
-      lsp.nvim_workspace()
-      lsp.setup()
-      vim.diagnostic.config { virtual_text = true }
 
-      -- Setup mason so it can manage 3rd party LSP servers
-      require("mason").setup({
-        ui = {
-          border = "rounded",
-        },
+      -- Set diagnostic icons
+      lsp_zero.set_sign_icons({
+        error = '✘',
+        warn = '▲',
+        hint = '⚑',
+        info = '»',
       })
 
-      -- Configure mason to auto install servers
+      -- Setup mason so it can manage 3rd party LSP servers
+      require('mason').setup({})
+
+      -- LSP servers to install (see list here: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers )
       require('mason-lspconfig').setup({
-        -- Replace the language servers listed here
-        -- with the ones you want to install
-        ensure_installed = { 'tsserver' },
+        ensure_installed = {},
         handlers = {
-          lsp.default_setup,
+          lsp_zero.default_setup,
         },
       })
     end

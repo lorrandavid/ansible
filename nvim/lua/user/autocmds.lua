@@ -4,32 +4,32 @@ end
 
 -- Highlight text on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = augroup("highlight_yank"),
-	pattern = "*",
-	desc = "Highlight selection on yank",
-	callback = function()
-		vim.highlight.on_yank({ timeout = 200, visual = true })
-	end,
+  group = augroup("highlight_yank"),
+  pattern = "*",
+  desc = "Highlight selection on yank",
+  callback = function()
+    vim.highlight.on_yank({ timeout = 200, visual = true })
+  end,
 })
 
 -- Toggle Diagnostic
 vim.api.nvim_create_user_command("ToggleDiagnostics", function()
-	if vim.g.diagnostics_enabled == nil then
-		vim.g.diagnostics_enabled = false
-		vim.diagnostic.disable()
-	elseif vim.g.diagnostics_enabled then
-		vim.g.diagnostics_enabled = false
-		vim.diagnostic.disable()
-	else
-		vim.g.diagnostics_enabled = true
-		vim.diagnostic.enable()
-	end
+  if vim.g.diagnostics_enabled == nil then
+    vim.g.diagnostics_enabled = false
+    vim.diagnostic.disable()
+  elseif vim.g.diagnostics_enabled then
+    vim.g.diagnostics_enabled = false
+    vim.diagnostic.disable()
+  else
+    vim.g.diagnostics_enabled = true
+    vim.diagnostic.enable()
+  end
 end, {})
 
 -- Toggle ESLint
-vim.api.nvim_create_user_command("ToggleESLint", function()
-	-- require("null-ls").toggle("eslint")
-end, {})
+-- vim.api.nvim_create_user_command("ToggleESLint", function()
+-- 	require("none_ls").toggle("eslint")
+-- end, {})
 
 -- Resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {

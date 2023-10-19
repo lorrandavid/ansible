@@ -1,14 +1,19 @@
 return {
-  "nvim-neo-tree/neo-tree.nvim",
-  keys = {
-    { "<leader>fe", ":Neotree toggle left<CR>", silent = true, desc = "Left File Explorer" },
-  },
-  opts = {
-    filesystem = {
-      filtered_items = {
-        hide_dotfiles = false,
-        hide_gitignored = false,
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- Not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = false,
+        },
       },
     },
-  },
+  }
 }

@@ -24,11 +24,16 @@ return {
       'rafamadriz/friendly-snippets', -- Optional
     },
     config = function()
-      local lsp_zero = require('lsp-zero')
+      local lsp = require("lsp-zero")
 
-      lsp_zero.on_attach(function(client, bufnr)
-        lsp_zero.default_keymaps({ buffer = bufnr })
+      -- Setup lsp-zero with recommended settings
+      lsp.preset("recommended")
+      lsp.on_attach(function(client, bufnr)
+        require("lsp-format").on_attach(client, bufnr)
       end)
+      lsp.nvim_workspace()
+      lsp.setup()
+      vim.diagnostic.config { virtual_text = true }
 
       -- Setup mason so it can manage 3rd party LSP servers
       require("mason").setup({
@@ -43,7 +48,7 @@ return {
         -- with the ones you want to install
         ensure_installed = { 'tsserver' },
         handlers = {
-          lsp_zero.default_setup,
+          lsp.default_setup,
         },
       })
     end

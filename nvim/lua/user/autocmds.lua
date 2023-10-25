@@ -28,7 +28,7 @@ end, {})
 
 -- Toggle ESLint
 -- vim.api.nvim_create_user_command("ToggleESLint", function()
--- 	require("none_ls").toggle("eslint")
+--   require("none_ls").toggle("eslint")
 -- end, {})
 
 -- Resize splits if window got resized

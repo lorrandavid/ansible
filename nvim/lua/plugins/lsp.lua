@@ -26,6 +26,7 @@ return {
     config = function()
       local lsp_zero = require('lsp-zero')
       local map_lsp_keybinds = require("user.keymaps_lsp").map_lsp_keybinds -- Has to load keymaps before plugins
+      local cmp = require("cmp")
 
       lsp_zero.on_attach(function(_, bufnr)
         -- see :help lsp-zero-keybindings
@@ -52,6 +53,14 @@ return {
         ensure_installed = {},
         handlers = {
           lsp_zero.default_setup,
+        },
+      })
+
+      -- Cmp window border
+      cmp.setup({
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
         },
       })
     end

@@ -61,10 +61,12 @@ nnoremap("<C-h>", function()
 end)
 
 -- Map neo-tree to <leader>e
-nnoremap("<leader>e", "<cmd>Neotree toggle position=float<cr>")
+nnoremap("<leader>E", "<cmd>Neotree toggle position=float action=focus<cr>")
 
--- Focus on current buffer in neo-tree
-nnoremap("<leader>E", "<cmd>Neotree action=focus<cr>")
+-- Map Oil to open as float
+nnoremap("<leader>e", function()
+  require("oil").toggle_float()
+end)
 
 -- Center buffer while navigating
 nnoremap("<C-u>", "<C-u>zz")

@@ -22,11 +22,18 @@ return {
       -- Snippets
       'L3MON4D3/LuaSnip', -- Required
       -- 'rafamadriz/friendly-snippets', -- Optional
+      --
+      -- Autotag/Autopairs
+      'windwp/nvim-ts-autotag',
+      'windwp/nvim-autopairs'
     },
     config = function()
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local lsp_zero = require('lsp-zero')
       local map_lsp_keybinds = require("user.keymaps_lsp").map_lsp_keybinds -- Has to load keymaps before plugins
       local cmp = require("cmp")
+
+      require("nvim-autopairs").setup()
 
       lsp_zero.on_attach(function(_, bufnr)
         -- see :help lsp-zero-keybindings
@@ -55,6 +62,9 @@ return {
           lsp_zero.default_setup,
         },
       })
+
+      -- Integrate nvim-autopairs with cmp
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
       -- Cmp window border
       cmp.setup({

@@ -28,40 +28,37 @@ nnoremap("<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 nnoremap("<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open Lazygit" })
 
 -- Better tmux navigation
--- nnoremap("<C-j>", function()
---   if vim.fn.exists(":NvimTmuxNavigateDown") ~= 0 then
---     vim.cmd.NvimTmuxNavigateDown()
---   else
---     vim.cmd.wincmd("j")
---   end
--- end)
---
--- nnoremap("<C-k>", function()
---   if vim.fn.exists(":NvimTmuxNavigateUp") ~= 0 then
---     vim.cmd.NvimTmuxNavigateUp()
---   else
---     vim.cmd.wincmd("k")
---   end
--- end)
---
--- nnoremap("<C-l>", function()
---   if vim.fn.exists(":NvimTmuxNavigateRight") ~= 0 then
---     vim.cmd.NvimTmuxNavigateRight()
---   else
---     vim.cmd.wincmd("l")
---   end
--- end)
---
--- nnoremap("<C-h>", function()
---   if vim.fn.exists(":NvimTmuxNavigateLeft") ~= 0 then
---     vim.cmd.NvimTmuxNavigateLeft()
---   else
---     vim.cmd.wincmd("h")
---   end
--- end)
+nnoremap("<C-j>", function()
+  if vim.fn.exists(":NvimTmuxNavigateDown") ~= 0 then
+    vim.cmd.NvimTmuxNavigateDown()
+  else
+    vim.cmd.wincmd("j")
+  end
+end)
 
--- Map neo-tree to <leader>e
-nnoremap("<leader>E", "<cmd>Neotree toggle position=float action=focus<cr>")
+nnoremap("<C-k>", function()
+  if vim.fn.exists(":NvimTmuxNavigateUp") ~= 0 then
+    vim.cmd.NvimTmuxNavigateUp()
+  else
+    vim.cmd.wincmd("k")
+  end
+end)
+
+nnoremap("<C-l>", function()
+  if vim.fn.exists(":NvimTmuxNavigateRight") ~= 0 then
+    vim.cmd.NvimTmuxNavigateRight()
+  else
+    vim.cmd.wincmd("l")
+  end
+end)
+
+nnoremap("<C-h>", function()
+  if vim.fn.exists(":NvimTmuxNavigateLeft") ~= 0 then
+    vim.cmd.NvimTmuxNavigateLeft()
+  else
+    vim.cmd.wincmd("h")
+  end
+end)
 
 -- Map Oil to open as float
 nnoremap("<leader>e", function()
@@ -284,8 +281,8 @@ nnoremap("<leader>[", function()
 end, { desc = "Illuminate: Goto previous reference" })
 
 -- nvim-ufo keybinds
-nnoremap("zR", require("ufo").openAllFolds)
-nnoremap("zM", require("ufo").closeAllFolds)
+-- nnoremap("zR", require("ufo").openAllFolds)
+-- nnoremap("zM", require("ufo").closeAllFolds)
 
 -- Insert --
 -- Map jj to <esc>

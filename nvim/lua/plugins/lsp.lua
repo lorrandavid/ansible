@@ -16,20 +16,17 @@ return {
       -- 'saadparwaiz1/cmp_luasnip', -- Optional
       -- 'hrsh7th/cmp-nvim-lua',     -- Optional
 
-      -- Install none-ls for diagnostics, code actions, and formating
-      -- 'nvimtools/none-ls.nvim',
-
       -- Snippets
       'L3MON4D3/LuaSnip', -- Required
       -- 'rafamadriz/friendly-snippets', -- Optional
-      --
+
       -- Autotag/Autopairs
       'windwp/nvim-ts-autotag',
       'windwp/nvim-autopairs'
     },
     config = function()
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local lsp_zero = require('lsp-zero')
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local map_lsp_keybinds = require("user.keymaps_lsp").map_lsp_keybinds -- Has to load keymaps before plugins
       local cmp = require("cmp")
 

@@ -8,46 +8,12 @@ wezterm.on("gui-startup", function(cmd)
 	window:gui_window():maximize()
 end)
 
-local custom_colorschemes = {
-	["Melange"] = {
-		foreground = "#ECE1D7",
-		background = "#292522",
-		cursor_bg = "#ECE1D7",
-		cursor_border = "#ECE1D7",
-		cursor_fg = "#292522",
-		selection_bg = "#403A36",
-		selection_fg = "#ECE1D7",
-		ansi = {
-			"#34302C",
-			"#BD8183",
-			"#78997A",
-			"#E49B5D",
-			"#7F91B2",
-			"#B380B0",
-			"#7B9695",
-			"#C1A78E",
-		},
-		brights = {
-			"#867462",
-			"#D47766",
-			"#85B695",
-			"#EBC06D",
-			"#A3A9CE",
-			"#CF9BC2",
-			"#89B3B6",
-			"#ECE1D7",
-		},
-	},
-}
-
 return {
 	default_domain = default_domain.name,
 	hide_tab_bar_if_only_one_tab = true,
-	color_schemes = custom_colorschemes,
 	color_scheme = "Catppuccin Macchiato",
-	font = wezterm.font("DankMono Nerd Font Bold"),
 	font = wezterm.font("JetBrainsMono Nerd Font"),
-	font_size = 12,
+	font_size = 11,
 	window_close_confirmation = "NeverPrompt",
 	leader = { key = "a", mods = "CTRL" },
 	keys = {

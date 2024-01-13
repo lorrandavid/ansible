@@ -4,7 +4,7 @@ return {
 		event = "BufEnter",
 		config = function()
 			require("illuminate").configure({
-				under_cursor = false,
+				under_cursor = true,
 				filetypes_denylist = {
 					"DressingSelect",
 					"Outline",

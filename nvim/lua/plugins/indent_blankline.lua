@@ -1,7 +1,7 @@
 return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
+		tag = "v2.20.8",
 		event = "VeryLazy",
 		dependencies = "tpope/vim-sleuth",
 		opts = {

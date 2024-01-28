@@ -11,8 +11,32 @@ end)
 return {
 	default_domain = default_domain.name,
 	hide_tab_bar_if_only_one_tab = true,
-	color_scheme = "Catppuccin Macchiato",
-	font = wezterm.font("JetBrainsMono Nerd Font"),
+	color_scheme = "Catppuccin Mocha",
+	font = wezterm.font({ -- Normal text
+		family = "JetBrainsMono Nerd Font",
+		weight = "Regular",
+	}),
+	font_rules = {
+		{ -- Italic
+			intensity = "Normal",
+			italic = true,
+			font = wezterm.font({
+				-- family="Monaspace Radon",  -- script style
+				family = "Monaspace Xenon", -- courier-like
+				style = "Italic",
+			}),
+		},
+
+		{ -- Bold Italic
+			intensity = "Bold",
+			italic = true,
+			font = wezterm.font({
+				family = "Monaspace Xenon",
+				style = "Italic",
+				weight = "Bold",
+			}),
+		},
+	},
 	font_size = 11,
 	window_close_confirmation = "NeverPrompt",
 	leader = { key = "a", mods = "CTRL" },

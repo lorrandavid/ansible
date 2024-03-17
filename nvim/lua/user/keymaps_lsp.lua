@@ -10,29 +10,29 @@ M.map_lsp_keybinds = function(buffer_number)
   nnoremap("gd", vim.lsp.buf.definition, { desc = "LSP: [G]oto [D]efinition", buffer = buffer_number })
 
   -- Telescope LSP keybinds --
-  nnoremap(
-    "gr",
-    require("telescope.builtin").lsp_references,
-    { desc = "LSP: [G]oto [R]eferences", buffer = buffer_number }
-  )
-
-  nnoremap(
-    "gi",
-    require("telescope.builtin").lsp_implementations,
-    { desc = "LSP: [G]oto [I]mplementation", buffer = buffer_number }
-  )
-
-  nnoremap(
-    "<leader>bs",
-    require("telescope.builtin").lsp_document_symbols,
-    { desc = "LSP: [B]uffer [S]ymbols", buffer = buffer_number }
-  )
-
-  nnoremap(
-    "<leader>ps",
-    require("telescope.builtin").lsp_workspace_symbols,
-    { desc = "LSP: [P]roject [S]ymbols", buffer = buffer_number }
-  )
+  -- nnoremap(
+  --   "gr",
+  --   require("telescope.builtin").lsp_references,
+  --   { desc = "LSP: [G]oto [R]eferences", buffer = buffer_number }
+  -- )
+  --
+  -- nnoremap(
+  --   "gi",
+  --   require("telescope.builtin").lsp_implementations,
+  --   { desc = "LSP: [G]oto [I]mplementation", buffer = buffer_number }
+  -- )
+  --
+  -- nnoremap(
+  --   "<leader>bs",
+  --   require("telescope.builtin").lsp_document_symbols,
+  --   { desc = "LSP: [B]uffer [S]ymbols", buffer = buffer_number }
+  -- )
+  --
+  -- nnoremap(
+  --   "<leader>ps",
+  --   require("telescope.builtin").lsp_workspace_symbols,
+  --   { desc = "LSP: [P]roject [S]ymbols", buffer = buffer_number }
+  -- )
 
   -- See `:help K` for why this keymap
   nnoremap("K", vim.lsp.buf.hover, { desc = "LSP: Hover Documentation", buffer = buffer_number })

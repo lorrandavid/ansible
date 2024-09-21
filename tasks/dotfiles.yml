@@ -1,0 +1,80 @@
+- name: Get current timestamp
+  command: date +"%Y%m%d%H%M%S"
+  register: timestamp_result
+  changed_when: false
+  tags:
+    - install
+    - dotfiles
+    - terminal
+
+- name: Create backup to old Neovim config
+  shell: "mv {{ lookup('env', 'HOME') }}/.config/nvim {{ lookup('env', 'HOME') }}/.config/nvim_{{ timestamp_result.stdout }}.bak"
+  ignore_errors: yes
+  tags:
+    - install
+    - dotfiles
+
+- name: Create symlink to Neovim config
+  file:
+    src: "{{ lookup('env', 'PWD') }}/nvim"
+    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
+    state: link
+    force: yes
+  tags:
+    - install
+    - dotfiles
+
+- name: Check that the .wezterm.lua exists
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.wezterm.lua"
+  register: wezterm_stats
+  tags:
+    - install
+    - dotfiles
+    - terminal
+    - wezterm
+
+# - name: Create backup to old .wezterm.lua
+#   shell: "mv {{ lookup('env', 'HOME') }}/.wezterm.lua {{ lookup('env', 'HOME') }}/.wezterm_{{ timestamp_result.stdout }}.lua.bak"
+#   tags:
+#     - install
+#     - dotfiles
+#     - terminal
+#     - wezterm
+#   when: wezterm_stats.stat.exists == True
+
+# - name: Copy .wezterm.lua config to home folder
+#   copy:
+#     src: "{{ lookup('env', 'PWD') }}/dotfiles/.wezterm.lua"
+#     dest: "{{ lookup('env', 'HOME') }}/.wezterm.lua"
+#     mode: 0644
+#   tags:
+#     - install
+#     - dotfiles
+#     - terminal
+#     - wezterm
+
+# - name: Copy .wezterm.lua config to home folder
+#   ansible.windows.win_copy:
+#     src: "{{ lookup('env', 'PWD') }}/dotfiles/.wezterm.lua"
+#     dest: '%UserProfile%\.wezterm.lua'
+#     backup: yes
+#   register: out
+#   tags:
+#     - install
+#     - dotfiles
+#     - terminal
+#     - wezterm
+
+# - hosts: CPX-ABOLJN07N5H
+#   tasks:
+#     - name: Copy file from WSL2 to Windows
+#       win_copy:
+#         src: "{{ lookup('env', 'PWD') }}/dotfiles/.wezterm.lua"
+#         dest: "%UserProfile%\\.wezterm.lua"
+#         backup: yes
+#   tags:
+#     - install
+#     - dotfiles
+#     - terminal
+#     - wezterm

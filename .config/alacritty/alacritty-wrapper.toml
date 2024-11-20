@@ -1,5 +1,0 @@
-# Wrapper configuration for Alacritty
-
-import = [
-"~/.config/alacritty/alacritty.toml"
-]

@@ -13,3 +13,11 @@
   tags:
     - install
     - node
+
+- name: Install tsserver
+  npm:
+    name: typescript-language-server
+    global: yes
+  tags:
+    - install
+    - node

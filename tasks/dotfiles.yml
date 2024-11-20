@@ -7,13 +7,13 @@
     - dotfiles
     - terminal
 
-- name: Ensure the config folder exists
-  ansible.builtin.file:
-    path: "{{ lookup('env', 'HOME')/.config }}" 
-    state: directory
-  tags:
-    - install
-    - dotfiles
+# - name: Ensure the config folder exists
+#   ansible.builtin.file:
+#     path: "{{ lookup('env', 'HOME')/.config }}" 
+#     state: directory
+#   tags:
+#     - install
+#     - dotfiles
 
 - name: Create backup to old Neovim config
   shell: "mv {{ lookup('env', 'HOME') }}/.config/nvim {{ lookup('env', 'HOME') }}/.config/nvim_{{ timestamp_result.stdout }}.bak"
@@ -25,7 +25,7 @@
 - name: Clone nvim config
   ansible.builtin.git:
     repo: https://github.com/lorrandavid/kickstart.nvim
-    dest: "{{ lookup('env', 'HOME')/.config/nvim }}"
+    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
     version: main
     force: yes
   tags:

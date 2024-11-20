@@ -1,39 +1,40 @@
-- name: Install Yarn
-  npm:
-    name: yarn
-    global: yes
+- name: Install Yarn if not already installed
+  shell: "npm list -g yarn || npm install -g yarn"
+  args:
+    warn: false
   tags:
     - install
     - node
 
-- name: Install Http-server
-  npm:
-    name: http-server
-    global: yes
+- name: Install Http-server if not already installed
+  shell: "npm list -g http-server || npm install -g http-server"
+  args:
+    warn: false
   tags:
     - install
     - node
 
-- name: Install tsserver
-  npm:
-    name: typescript-language-server
-    global: yes
+- name: Install tsserver if not already installed
+  shell: "npm list -g typescript-language-server || npm install -g typescript-language-server"
+  args:
+    warn: false
   tags:
     - install
     - node
 
-- name: Install bun
-  npm:
-    name: bun
-    global: yes
+- name: Install bun if not already installed
+  shell: "npm list -g bun || npm install -g bun"
+  args:
+    warn: false
   tags:
     - install
     - node
 
-- name: Install pnpm
-  npm:
-    name: pnpm
-    global: yes
+- name: Install pnpm if not already installed
+  shell: "npm list -g pnpm || npm install -g pnpm"
+  args:
+    warn: false
   tags:
     - install
     - node
+

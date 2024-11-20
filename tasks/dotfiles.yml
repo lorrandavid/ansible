@@ -35,7 +35,7 @@
   ansible.builtin.git:
     repo: https://github.com/lorrandavid/kickstart.nvim
     dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
-    version: main
+    version: master
     force: yes
   tags:
     - install

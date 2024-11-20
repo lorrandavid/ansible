@@ -1,7 +1,4 @@
 - hosts: localhost
-  vars:
-    source_key: "./.ssh/id_rsa"
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   pre_tasks:
     - name: Update Apt
       become: true
@@ -13,11 +10,10 @@
         - install
         - core
   tasks:
-    - include: tasks/ssh.yml
-    - include: tasks/git.yml
-    - include: tasks/core.yml
-    - include: tasks/node.yml
-    - include: tasks/npm-packages.yml
-    - include: tasks/shell.yml
-    - include: tasks/nvim.yml
-    - include: tasks/dotfiles.yml
+    - import_tasks: tasks/git.yml
+    - import_tasks: tasks/core.yml
+    - import_tasks: tasks/node.yml
+    - import_tasks: tasks/npm-packages.yml
+    - import_tasks: tasks/shell.yml
+    - import_tasks: tasks/nvim.yml
+    - import_tasks: tasks/dotfiles.yml

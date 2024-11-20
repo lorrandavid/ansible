@@ -1,39 +1,39 @@
 - name: Install Yarn if not already installed
   shell: "npm list -g yarn || npm install -g yarn"
-  args:
-    warn: false
+  register: yarn_installed
+  changed_when: yarn_installed.rc != 0
   tags:
     - install
     - node
 
 - name: Install Http-server if not already installed
   shell: "npm list -g http-server || npm install -g http-server"
-  args:
-    warn: false
+  register: http_server_installed
+  changed_when: http_server_installed.rc != 0
   tags:
     - install
     - node
 
 - name: Install tsserver if not already installed
   shell: "npm list -g typescript-language-server || npm install -g typescript-language-server"
-  args:
-    warn: false
+  register: tsserver_installed
+  changed_when: tsserver_installed.rc != 0
   tags:
     - install
     - node
 
 - name: Install bun if not already installed
   shell: "npm list -g bun || npm install -g bun"
-  args:
-    warn: false
+  register: bun_installed
+  changed_when: bun_installed.rc != 0
   tags:
     - install
     - node
 
 - name: Install pnpm if not already installed
   shell: "npm list -g pnpm || npm install -g pnpm"
-  args:
-    warn: false
+  register: pnpm_installed
+  changed_when: pnpm_installed.rc != 0
   tags:
     - install
     - node

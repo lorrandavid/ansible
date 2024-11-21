@@ -2,7 +2,7 @@
   become: true
   apt:
     name:
-      ["build-essential", "ninja-build", "gettext", "cmake", "unzip", "curl"]
+      ["build-essential", "ninja-build", "gettext", "cmake", "unzip", "curl", "ripgrep", "fd-find"]
   tags:
     - install
     - neovim

@@ -1,15 +1,6 @@
-- name: Get current timestamp
-  command: date +"%Y%m%d%H%M%S"
-  register: timestamp_result
-  changed_when: false
-  tags:
-    - install
-    - dotfiles
-    - terminal
-
 - name: Ensure the config folder exists
   ansible.builtin.file:
-    path: "{{ lookup('env', 'HOME') }}/.config" 
+    path: "{{ ansible_env.HOME }}/.config" 
     state: directory
   tags:
     - install
@@ -17,16 +8,8 @@
 
 - name: Check if nvim folder exists
   ansible.builtin.stat:
-    path: "{{ lookup('env', 'HOME') }}/.config/nvim"
+    path: "{{ ansible_env.HOME }}/.config/nvim"
   register: nvim_folder
-  tags:
-    - install
-    - dotfiles
-
-- name: Create backup of old Neovim config
-  shell: "mv {{ lookup('env', 'HOME') }}/.config/nvim {{ lookup('env', 'HOME') }}/.config/nvim_{{ timestamp_result.stdout }}.bak"
-  when: nvim_folder.stat.exists
-  ignore_errors: yes
   tags:
     - install
     - dotfiles
@@ -34,9 +17,9 @@
 - name: Clone nvim config
   ansible.builtin.git:
     repo: https://github.com/lorrandavid/kickstart.nvim
-    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
+    dest: "{{ ansible_env.HOME }}/.config/nvim"
     version: master
-    force: yes
+  when: not nvim_folder.stat.exists
   tags:
     - install
     - dotfiles
